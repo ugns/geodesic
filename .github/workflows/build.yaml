@@ -31,6 +31,7 @@ jobs:
         with:
           image: geodesic
           registry: ghcr.io
+          username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           addLatest: true
  
