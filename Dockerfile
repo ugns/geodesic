@@ -13,12 +13,8 @@ RUN apt-get install -y software-properties-common && \
     apt-get install -y golang-petname
 
 
-# Install terraform.
-RUN apt-get update
-RUN update-alternatives --set terraform /usr/share/terraform/0.14/bin/terraform
-
 # Install Atmos
-RUN apt-get install -y --allow-downgrades \
+RUN apt-get update && apt-get install -y --allow-downgrades \
     atmos \
     vendir
 
