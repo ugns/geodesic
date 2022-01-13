@@ -9,9 +9,7 @@ RUN apt-get install -y software-properties-common && \
     add-apt-repository "deb http://archive.ubuntu.com/ubuntu bionic universe" && \
     gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv 3B4FE6ACC0B21F32 && \
     gpg --export --armor 3B4FE6ACC0B21F32 | apt-key add - && \
-    apt-get update && \
-    apt-get install -y golang-petname
-
+    apt-get update 
 
 # Install Atmos
 RUN apt-get update && apt-get install -y --allow-downgrades \
@@ -23,7 +21,7 @@ ENV MOTD_URL=""
 
 ENV AWS_VAULT_BACKEND=file
 
-ENV DOCKER_IMAGE="ugns/geodesic"
+ENV DOCKER_IMAGE="ghcr.io/ugns/geodesic"
 ENV DOCKER_TAG="latest"
 
 # Geodesic banner
