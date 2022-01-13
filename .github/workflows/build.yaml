@@ -11,14 +11,22 @@ jobs:
     name: 'Build'
     runs-on: ubuntu-latest
     steps:
-      - name: "Checkout"
+      - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Generate token
+        id: generate_token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
+          installation_id: ${{ secrets.INSTALLATION_ID }}
+        
       - name: Docker Build & Push Action
         uses: mr-smithers-excellent/docker-build-push@v5.6
         with:
           image: geodesic
           registry: ghcr.io
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ steps.generate_token.outputs.token }}
           addLatest: true
  
