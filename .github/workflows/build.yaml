@@ -17,7 +17,7 @@ jobs:
       - name: Docker Build & Push Action
         uses: mr-smithers-excellent/docker-build-push@v5.6
         with:
-          image: ghcr.io/ugns/geodesic
+          image: geodesic
           registry: ghcr.io
           password: ${{ secrets.GITHUB_TOKEN }}
           addLatest: true
